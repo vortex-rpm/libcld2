@@ -1,7 +1,7 @@
 Name:      libcld2
 Summary:   Compact Language Detector 2
 Version:   git20170111
-Release:   0%{?dist}
+Release:   1%{?dist}
 License:   APL2
 Group:     System Environment/Libraries
 Vendor:    Vortex RPM
@@ -27,6 +27,11 @@ cd internal
 %install
 rm -rf $RPM_BUILD_ROOT
 install -D -m 644 internal/%{name}.so $RPM_BUILD_ROOT/%{_libdir}/%{name}.so
+mkdir -p $RPM_BUILD_ROOT/%{_includedir}/%{name}
+mkdir -p $RPM_BUILD_ROOT/%{_includedir}/%{name}/internal
+mkdir -p $RPM_BUILD_ROOT/%{_includedir}/%{name}/public
+cp internal/*.h $RPM_BUILD_ROOT/%{_includedir}/%{name}/internal/
+cp public/*.h $RPM_BUILD_ROOT/%{_includedir}/%{name}/public/
 
 
 %post -p /sbin/ldconfig
@@ -38,8 +43,12 @@ install -D -m 644 internal/%{name}.so $RPM_BUILD_ROOT/%{_libdir}/%{name}.so
 %files
 %doc LICENSE README.md docs
 %{_libdir}/%{name}.so
+%{_includedir}/%{name}
 
 
 %changelog
+* Wed Jan 11 2017 Ilya Otyutskiy <ilya.otyutskiy@icloud.com> - git20170111-1.vortex
+- Add missing headers
+
 * Wed Jan 11 2017 Ilya Otyutskiy <ilya.otyutskiy@icloud.com> - git20170111-0.vortex
 - Initial packaging
