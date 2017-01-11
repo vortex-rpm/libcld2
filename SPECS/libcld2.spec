@@ -1,7 +1,7 @@
 Name:      libcld2
 Summary:   Compact Language Detector 2
 Version:   git20170111
-Release:   1%{?dist}
+Release:   2%{?dist}
 License:   APL2
 Group:     System Environment/Libraries
 Vendor:    Vortex RPM
@@ -27,11 +27,11 @@ cd internal
 %install
 rm -rf $RPM_BUILD_ROOT
 install -D -m 644 internal/%{name}.so $RPM_BUILD_ROOT/%{_libdir}/%{name}.so
-mkdir -p $RPM_BUILD_ROOT/%{_includedir}/%{name}
-mkdir -p $RPM_BUILD_ROOT/%{_includedir}/%{name}/internal
-mkdir -p $RPM_BUILD_ROOT/%{_includedir}/%{name}/public
-cp internal/*.h $RPM_BUILD_ROOT/%{_includedir}/%{name}/internal/
-cp public/*.h $RPM_BUILD_ROOT/%{_includedir}/%{name}/public/
+mkdir -p $RPM_BUILD_ROOT/%{_includedir}/cld2
+mkdir -p $RPM_BUILD_ROOT/%{_includedir}/cld2/internal
+mkdir -p $RPM_BUILD_ROOT/%{_includedir}/cld2/public
+cp internal/*.h $RPM_BUILD_ROOT/%{_includedir}/cld2/internal/
+cp public/*.h $RPM_BUILD_ROOT/%{_includedir}/cld2/public/
 
 
 %post -p /sbin/ldconfig
@@ -47,6 +47,9 @@ cp public/*.h $RPM_BUILD_ROOT/%{_includedir}/%{name}/public/
 
 
 %changelog
+* Wed Jan 11 2017 Ilya Otyutskiy <ilya.otyutskiy@icloud.com> - git20170111-2.vortex
+- Different include paths
+
 * Wed Jan 11 2017 Ilya Otyutskiy <ilya.otyutskiy@icloud.com> - git20170111-1.vortex
 - Add missing headers
 
