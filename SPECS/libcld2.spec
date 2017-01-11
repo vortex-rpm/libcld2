@@ -43,7 +43,7 @@ cp public/*.h $RPM_BUILD_ROOT/%{_includedir}/cld2/public/
 %files
 %doc LICENSE README.md docs
 %{_libdir}/%{name}.so
-%{_includedir}/%{name}
+%{_includedir}/cld2
 
 
 %changelog
